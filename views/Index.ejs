@@ -1,0 +1,93 @@
+<%- include('./partials/Header.ejs') %>
+<%- include('./partials/Navbar.ejs') %>
+    <div class="container mt-3 ">
+        <div class="row mt-5">
+            <div class="col-sm-6 ">
+                <h4 class="alert alert-success text-center mt-2 ">You Can Add New Student Records Here..</h4>
+                <form action="/app/createbook" id="form" method="POST">
+                    <div class="mb-3">
+                        <label for="title" class="form-label ">Title</label>
+                        <input type="text" class="form-control " id="title" name="title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="author" class="form-label ">Author</label>
+                        <input type="text" class="form-control " id="author" name="author">
+                    </div>
+                    <div class="mb-3">
+                        <label for="genre" class="form-label ">Genre</label>
+                        <input type="text" class="form-control " id="genre" name="genre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="desc" class="form-label ">Description</label>
+                        <input type="text" class="form-control " id="desc" name="description">
+                    </div>
+                    <button type="submit" class="btn btn-success mb-1 ">Submit</button>
+                </form>
+            </div>
+            <div class="col-sm-6" style="height: 300px; max-width: 100%; overflow: y-scroll">
+                <h4 class="alert alert-info  text-center my-2 ">All Student Records</h4>
+                <%# Show all data %>
+                    <form action="" class="d-flex gap-3">
+                        <input type="search" placeholder="Search by book title" class="form-control my-2" id="search">
+                        <button type="submit" class="btn btn-primary my-2" id="searchbtn">Search</button>
+                    </form>
+                    <table class="table table-striped table-hover ">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%# Show all data %>
+                            <% data.forEach(function(dt, index) { %>
+                                <tr>
+                                    <td><%= index+1 %></td>
+                                    <td>
+                                        <a href="/app/getsinglebook/<%= dt.id %>">
+                                            <%= dt.title %>
+                                        </a>
+                                    </td>
+                                    <td><%= dt.author %></td>
+                                    <td style="display: flex; justify-content: center; ">
+                                        <a href="/app/edit/<%= dt.id %>">
+                                            <i style="cursor: pointer;" class="fa-solid fa-pen-to-square text-success  mx-3"></i>
+                                        </a>
+                                        <a href="/app/delete/<%= dt.id %>">
+                                            <i style="cursor: pointer;" class="fa-solid fa-trash text-danger delete-book "></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <% }); 
+                            %>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        let title = document.getElementById('title');
+        let author = document.getElementById('author');
+        let genre = document.getElementById('genre');
+        let desc = document.getElementById('desc');
+
+        document.querySelector("#form").addEventListener("submit", function (e) {
+            if (!title.value || !author.value || !genre.value || !description.value) {
+                e.preventDefault();
+                alert("All fields are required!");
+            }
+        });
+        // let deleteBook = document.querySelectorAll('.delete-book');
+        // deleteBook.forEach((btn) => {
+        //     btn.addEventListener('click', (e) => {
+        //         if (confirm("Are you sure you want to delete this book?")) {
+        //             e.preventDefault();
+        //             window.location.href = btn.href;
+        //         }
+        //     });
+        // });
+    </script>
+<%- include('./partials/Footer.ejs') %>
+

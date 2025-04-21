@@ -1,0 +1,30 @@
+<%- include('./partials/Header.ejs') %>
+<%- include('./partials/Navbar.ejs') %>
+<div class="container">
+    <div class="row my-4 ">
+        <div class="col-sm-6 offset-3 border border-2 border-info p-3 shodow mt-5">
+            <table class="table mt-5">
+                <caption class="caption"><%= result.title %></caption>
+                <tr>
+                    <td>Title</td>
+                    <td><%= result.title %></td>
+                </tr>
+                <tr>
+                    <td>Author</td>
+                    <td><%= result.author %></td>
+                </tr>
+                <tr>
+                    <td>Genre</td>
+                    <td><%= result.genre %></td>
+                </tr>
+                <tr>
+                    <td>Description</td>    
+                    <td><%= result.description %></td>
+                </tr>
+            </table>
+            <a href="/app/getallbooks" class="btn btn-info">Back</a>
+        </div>
+    </div>
+</div>
+
+<%- include('./partials/Footer.ejs') %>

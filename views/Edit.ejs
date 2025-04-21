@@ -1,0 +1,32 @@
+<%- include('./partials/Header.ejs') %>
+<%- include('./partials/Navbar.ejs') %>
+
+<div class="container mt-3 ">
+    <div class="row offset-2 mt-4">
+        <div class="col-sm-8 border border-2 border-light  px-5 py-3 shadow-lg rounded-4  my-2 mt-5">
+            <h2 class="alert alert-success text-center text-danger  ">Update</h2>
+            <form action="/app/update/<%= result.id %>" id="form" method="POST">
+                <div class="mb-3">
+                    <label for="title" class="form-label ">Title</label>
+                    <input type="text" class="form-control " id="title" name="title" value="<%= result.title %>">
+                </div>
+                <div class="mb-3">
+                    <label for="author" class="form-label ">Author</label>
+                    <input type="text" class="form-control " id="author" name="author" value="<%= result.author %>">
+                </div>
+                <div class="mb-3">
+                    <label for="genre" class="form-label ">Genre</label>
+                    <input type="text" class="form-control " id="genre" name="genre"  value="<%= result.genre %>">
+                </div>
+                <div class="mb-3">
+                    <label for="desc" class="form-label ">Description</label>
+                    <input type="text" class="form-control " id="desc" name="description" value="<%= result.description %>">
+                </div>
+                <button type="submit" class="btn btn-success mb-1 ">Submit</button>
+                <a href="/app/getallbooks" class="btn btn-info mb-1 ">Back</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('./partials/Footer.ejs') %>
