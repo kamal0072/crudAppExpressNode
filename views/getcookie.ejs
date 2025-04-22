@@ -1,0 +1,17 @@
+<%- include('./partials/Header.ejs') %>
+<%- include('./partials/Navbar.ejs') %>
+<div class="container mt-5">
+    <div class="row mt-5">
+        <div class="col-sm-8 offset-2 mt-5">
+            <h1>Cookies list will disply here...</h1>
+            <ul class="list-unstyled ">
+                <li> address :  <%= address  %> </li>
+                <li> Name  :  <%= name  %> </li>
+                <li> Age  :  <%= age  %> </li>
+                <li> email  :  <%= email  %> </li>
+                <li><a href="/app/setcookie" class="text-decoration-none">Back</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<%- include('./partials/Footer.ejs') %>

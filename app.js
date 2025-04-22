@@ -4,6 +4,8 @@ import connectDB from "./db/connectDB.js";
 const app = express();
 import { join } from "path";
 import router from "./routes/web.js";
+import cookieParser from "cookie-parser";
+
 //config env data/parameters
 dotenv.config();
 const PORT = process.env.PORT
@@ -23,6 +25,8 @@ app.set("views", join(process.cwd(), "views"));
 app.use(express.urlencoded({ extended: true }));
 // app.use(express.json());
 
+//middleware for cookies parsing
+app.use(cookieParser());
 //base routing for all controllers
 app.use("/app", router);
 app.listen(PORT, () => {
